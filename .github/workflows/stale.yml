@@ -1,0 +1,19 @@
+name: 'Close stale issues and PRs'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    paths:
+      - '.github/workflows/stale.yml'
+
+jobs:
+
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/stale@v5
