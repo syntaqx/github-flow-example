@@ -22,6 +22,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_REVERT_NUMBER: ${{ github.event.number }}
           PR_REVERT_NO_BRANCH: true
+
+      # TODO:
+      # - Slack integration for notifying engineer their code was reverted?
+
   delete:
     runs-on: ubuntu-latest
     needs: [ smoke ]
