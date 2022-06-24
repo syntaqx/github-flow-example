@@ -27,12 +27,13 @@ The following settings are considered essential to achieve maximum workflow resu
 
 - `main`
 
-##### `main`
+##### Branch protection rules
 
-- [x] Require a pull request before merging
-  - [x] Require approvals `1`
-  - [x] Require review from Code Owners
-- [x] Require status checks to pass before merging
-  - test
-- [x] Require deployments to succeed before merging
-  - [x] review
+- `main`
+  - [x] Require a pull request before merging
+    - [x] Require approvals `1`
+    - [x] Require review from Code Owners
+  - [x] Require status checks to pass before merging
+    - test
+  - [x] Require deployments to succeed before merging
+    - [x] review
