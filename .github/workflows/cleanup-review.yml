@@ -10,20 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Run smoke tests of the review environment"
-      # -
-      #   uses: k1LoW/pr-revert-action@v0
-      #   if: ${{ failure() }}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     PR_REVERT_NUMBER: ${{ github.event.number }}
-
       -
+        uses: k1LoW/pr-revert-action@v0
         if: ${{ failure() }}
-        name: Automatic Revert
-        uses: srt32/revert@v0.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          PR_REVERT_NUMBER: ${{ github.event.number }}
+          PR_REVERT_NO_PULL_REQUEST: true
   delete:
     runs-on: ubuntu-latest
     needs: [ smoke ]
