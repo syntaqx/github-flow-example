@@ -1,4 +1,4 @@
-name: 'Close stale issues and PRs'
+name: 'Clean stale data from project'
 
 on:
   workflow_dispatch:
@@ -16,6 +16,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
+      - name: Close Stale Issues and PRs
       - uses: actions/stale@v5
 
   branches:
