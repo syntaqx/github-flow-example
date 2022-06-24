@@ -1,0 +1,30 @@
+name: Cleanup Review Environment
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "Run smoke tests of the review environment"
+     -
+        uses: k1LoW/pr-revert-action@v0
+        if: ${{ failure() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVERT_NUMBER: ${{ github.event.number }}
+
+  delete:
+    runs-on: ubuntu-latest
+    needs: [ smoke ]
+    steps:  
+      - name: Delete Deployment Environment
+        uses: strumwolf/delete-deployment-environment@v2.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: review
+          ref: ${{ github.head_ref }} 
+          onlyDeactivateDeployments: true
