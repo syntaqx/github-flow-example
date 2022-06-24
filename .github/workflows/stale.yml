@@ -17,3 +17,17 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/stale@v5
+
+  branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete abandoned branches
+        uses: phpdocker-io/github-actions-delete-abandoned-branches@v1
+        id: delete_stuff
+        with:
+          github_token: ${{ github.token }}
+          last_commit_age_days: 100
+          dry_run: no
+      -
+        name: Get output
+        run: "echo 'Deleted branches: ${{ steps.delete_stuff.outputs.deleted_branches }}'"
