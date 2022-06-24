@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: "Run smoke tests of the review environment"
-     -
+      -
         uses: k1LoW/pr-revert-action@v0
         if: ${{ failure() }}
         env:
