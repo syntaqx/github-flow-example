@@ -1,5 +1,6 @@
-# github-flow-example
-An example implementation of GitHub Flow with CI &amp; CD
+# GitHub Flow - An example
+
+An example implementation of GitHub Flow with CI & CD
 
 ## Repository Settings
 
