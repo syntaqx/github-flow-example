@@ -1,0 +1,21 @@
+# .github/workflows/revert.yml
+name: Revert
+
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: '--number: Number of merged pull request to revert'
+        default: "8"
+        required: true
+
+jobs:
+  revert:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: k1LoW/pr-revert-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_REVERT_NUMBER: ${{ github.event.inputs.number }}
+          PR_REVERT_NO_BRANCH: true
