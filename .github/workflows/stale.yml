@@ -1,4 +1,4 @@
-name: 'Clean stale data'
+name: 'Cleanup stale data'
 
 on:
   workflow_dispatch:
@@ -16,13 +16,13 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - name: Close Stale Issues and PRs
+      - name: 'Close stale issues and PRs'
         uses: actions/stale@v5
 
   branches:
     runs-on: ubuntu-latest
     steps:
-      - name: Delete abandoned branches
+      - name: 'Delete abandoned branches'
         uses: phpdocker-io/github-actions-delete-abandoned-branches@v1
         id: delete_stuff
         with:
