@@ -1,4 +1,4 @@
-name: 'Clean stale data from project'
+name: 'Clean stale data'
 
 on:
   workflow_dispatch:
