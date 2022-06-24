@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: review
-      url: https://${{ steps.variables.outputs.github_head_ref_slug }}.syntaqx.io
+      url: https://review-${{ steps.variables.outputs.github_head_ref_slug }}.syntaqx.io
     steps:
       - uses: actions/checkout@v3
       - name: Inject slug/short variables
