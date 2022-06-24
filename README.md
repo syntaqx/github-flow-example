@@ -35,6 +35,6 @@ The following settings are considered essential to achieve maximum workflow resu
     - [x] Require review from Code Owners
   - [x] Require status checks to pass before merging
     - test
-    - deployment
+    - lint
   - [x] Require deployments to succeed before merging
     - [x] review
