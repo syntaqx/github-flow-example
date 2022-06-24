@@ -1,4 +1,4 @@
-name: Cleanup Review Environment
+name: Teardown Review Environment
 
 on:
   pull_request:
