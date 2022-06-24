@@ -7,10 +7,12 @@ vendor/
 # Exclude "build-time" ignore files.
 .dockerignore
 .gcloudignore
+docker-compose*
 
 # Exclude git history and configuration.
 .git*
 .vscode*
+CODEOWNERS*
 
 # Exclude artifact types
 **/*.tar.gz
