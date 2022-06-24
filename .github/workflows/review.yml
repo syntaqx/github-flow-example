@@ -10,12 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: review
-      url: https://${{ steps.variables.outputs.github_base_ref_slug }}.syntaqx.io
+      url: https://${{ steps.variables.outputs.github_ref_slug }}.syntaqx.io
     steps:
       - uses: actions/checkout@v3
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v4
       - id: variables
-        run: echo "::set-output name=github_base_ref_slug::${{ env.GITHUB_BASE_REF_SLUG }}"
+        run: >
+          echo "::set-output name=github_head_ref_slug::${{ env.GITHUB_HEAD_REF_SLUG }}"
+          echo "::set-output name=github_base_ref_slug::${{ env.GITHUB_BASE_REF_SLUG }}"
+          echo "::set-output name=github_ref_slug::${{ env.GITHUB_REF_SLUG }}"
       - name: Deploy
         run: echo "TODO"
