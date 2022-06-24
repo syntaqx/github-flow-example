@@ -9,7 +9,9 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Run smoke tests of the review environment"
+      - run: >
+          echo "Run smoke tests of the review environment"
+          exit 1
       -
         uses: k1LoW/pr-revert-action@v0
         if: ${{ failure() }}
