@@ -9,7 +9,14 @@ on:
 
 jobs:
 
+  build:
+    uses: ./.github/workflows/docker.yml
+    with:
+      push: true
+    secrets: inherit
+
   deployment:
+    needs: [ build ]
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -19,4 +26,4 @@ jobs:
       cancel-in-progress: false
     steps:
       - name: Deploy
-        run: echo "TODO"
+        run: echo "Deploy ${{ needs.build.outputs.image }}"
