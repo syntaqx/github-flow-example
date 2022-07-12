@@ -1,7 +1,7 @@
 name: Review Environment
 
 on:
-  pull_request:
+  pull_request_target:
     types: [ reopened, opened, synchronize ]
 
 jobs:
