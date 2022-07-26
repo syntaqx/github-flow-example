@@ -12,6 +12,7 @@ on:
       image:
         description: "Output Image"
         value: ${{ github.repository }}:sha-${{ jobs.build.outputs.version }}
+
 jobs:
 
   build:
