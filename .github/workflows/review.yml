@@ -24,8 +24,18 @@ jobs:
         uses: rlespinasse/github-slug-action@v4
         with:
           slug-maxlength: 30
-      - name: Set outputs
+      -
+        name: Set outputs
         id: variables
         run: echo "::set-output name=github_head_ref_slug_url::${{ env.GITHUB_HEAD_REF_SLUG_URL }}"
-      - name: Deploy
-        run: echo "Deploy Image ${{ needs.build.outputs.image }}"
+      -
+        name: Setup Kustomize
+        run: |-
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          mv kustomize /usr/local/bin/kustomize
+          chmod +x /usr/local/bin/kustomize
+      -
+        name: Deploy
+        run: |-
+          kustomize edit set image syntaqx/github-flow-example=${{ needs.build.outputs.image }}
+          kustomize build .
