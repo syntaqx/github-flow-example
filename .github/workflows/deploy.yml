@@ -25,5 +25,14 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: false
     steps:
-      - name: Deploy
-        run: echo "Deploy ${{ needs.build.outputs.image }}"
+      -
+        name: Setup Kustomize
+        run: |-
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          mv kustomize /usr/local/bin/kustomize
+          chmod +x /usr/local/bin/kustomize
+      -
+        name: Deploy
+        run: |-
+          kustomize edit set image syntaqx/github-flow-example=${{ needs.build.outputs.image }}
+          kustomize build .
