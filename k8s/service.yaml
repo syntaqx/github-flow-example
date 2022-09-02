@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-flow-service
+  namespace: github-flow
+spec:
+  selector:
+    app: github-flow
+  ports:
+    - name: http-port
+      protocol: TCP
+      port: 80
+      targetPort: 8080
