@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-flow-example-deployment
+  namespace: github-flow-example
+  labels:
+    app: github-flow-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: github-flow-example
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: github-flow-example
+    spec:
+      containers:
+      - name: github-flow-example
+        image: syntaqx/github-flow-example
+        imagePullPolicy: Always
+        env:
+        - name: DATABASE_DSN
+          value: postgres://user:password@hostname/database
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
