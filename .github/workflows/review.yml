@@ -28,7 +28,7 @@ jobs:
       -
         name: Set outputs
         id: variables
-        run: echo "::set-output name=github_head_ref_slug_url::${{ env.GITHUB_HEAD_REF_SLUG_URL }}"
+        run: echo "github_head_ref_slug_url=${{ env.GITHUB_HEAD_REF_SLUG_URL }}" >> $GITHUB_OUTPUT
       -
         name: Setup Kustomize
         run: |-
