@@ -32,7 +32,6 @@ The following settings are considered essential to achieve maximum workflow resu
 - `main`
   - [x] Require a pull request before merging
     - [x] Require approvals `1`
-    - [x] Require review from Code Owners
   - [x] Require status checks to pass before merging
     - test
     - lint
