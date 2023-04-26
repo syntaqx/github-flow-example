@@ -20,6 +20,7 @@ jobs:
       url: https://${{ steps.variables.outputs.github_head_ref_slug_url }}.syntaqx.io
     steps:
       - uses: actions/checkout@v3
+      - uses: syntaqx/setup-kustomize@v1.0.0
       -
         name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v4
@@ -29,12 +30,6 @@ jobs:
         name: Set outputs
         id: variables
         run: echo "github_head_ref_slug_url=${{ env.GITHUB_HEAD_REF_SLUG_URL }}" >> $GITHUB_OUTPUT
-      -
-        name: Setup Kustomize
-        run: |-
-          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
-          mv kustomize /usr/local/bin/kustomize
-          chmod +x /usr/local/bin/kustomize
       -
         name: Deploy
         run: |-
