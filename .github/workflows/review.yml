@@ -19,7 +19,7 @@ jobs:
       name: review
       url: https://${{ steps.variables.outputs.github_head_ref_slug_url }}.syntaqx.io
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: syntaqx/setup-kustomize@v1
       -
         name: Inject slug/short variables
