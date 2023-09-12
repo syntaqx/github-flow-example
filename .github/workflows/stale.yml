@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Delete abandoned branches'
-        uses: phpdocker-io/github-actions-delete-abandoned-branches@v1
+        uses: phpdocker-io/github-actions-delete-abandoned-branches@v2
         id: delete-branches
         with:
           github_token: ${{ github.token }}
